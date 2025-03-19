@@ -1,0 +1,72 @@
+<!--pages/rankingPage/rankingPage.wxml-->
+<van-tabs active="{{ active }}" bind:change="onChange" color="#3e77ec" sticky animated>
+  <van-tab title="高分经典">
+    <view class="box">
+        <view 
+            class="movieCard {{index !== scoreTopList.length - 1 ? 'cardLine' : ''}}" 
+            wx:for="{{scoreTopList}}" 
+            wx:key="*this"
+            >
+            <view class="picViewBox" bind:tap="toDetail" data-item="{{item}}">
+                <image class="picView" style="width: 28%;" src="{{item.pictureList[0]}}" mode="aspectFill"/>
+                <image class="picView" style="width: 70%;" src="{{item.pictureList[1]}}" mode="aspectFill"/>
+            </view>
+            <view style="margin-top: 15rpx; width: 100%; position: relative;">
+                <view style="font-size: 34rpx; font-weight: bold; display: flex;">
+                    <view class="ranking">NO.{{index+1}}</view>
+                    {{item.name}}
+                </view>
+                <view style="display: flex; justify-content: start; align-items: center; margin-top: 8rpx;">
+                    <van-rate 
+                    value="{{item.rate/2}}" 
+                    bind:change="onChange" 
+                    color="#ffd21e"
+                    void-color="#eee"
+                    size="24rpx"
+                    gutter="2rpx"
+                    readonly
+                    allow-half
+                    />
+                    <view style="font-size: 24rpx; height: 24rpx; color: #f3c50c; margin-left: 10rpx;">
+                        {{item.rate === '0.0' ? '无评分记录' : item.rate}}
+                    </view>
+                </view>
+                <view class="downText">
+                    {{item.releaseTime}} / {{item.country}} / {{item.type}} / {{item.actor}}
+                </view>
+                <view class="toDetail" bind:tap="toDetail" data-item="{{item}}">详情</view>
+            </view>
+        </view>
+        <van-divider contentPosition="center" customStyle="width: 90%; margin: 0 auto">没有更多了</van-divider>
+        <view style="height: 80rpx;"></view>
+    </view>
+  </van-tab>
+  <van-tab title="票房排行">
+    <view class="box">
+        <view class="movieCard {{index !== saleTopList.length - 1 ? 'cardLine' : ''}}" wx:for="{{saleTopList}}" wx:key="*this">
+            <view class="picViewBox" bind:tap="toDetail" data-item="{{item}}">
+                <image class="picView" style="width: 28%;" src="{{item.pictureList[0]}}" mode="aspectFill"/>
+                <image class="picView" style="width: 70%;" src="{{item.pictureList[1]}}" mode="aspectFill"/>
+            </view>
+            <view style="margin-top: 15rpx; width: 100%; position: relative;">
+                <view style="font-size: 34rpx; font-weight: bold; display: flex;">
+                    <view class="ranking">NO.{{index+1}}</view>
+                    {{item.name}}
+                </view>
+                <view style="display: flex; justify-content: start; align-items: center; margin-top: 12rpx;">
+                    <view style="font-size: 26rpx; height: 34rpx; color: #f3c50c;">
+                        <view style="display: inline; color: #B1B1B1;">票房:</view>
+                        {{item.sales === 0 ? '无票房记录' : item.sales}}
+                    </view>
+                </view>
+                <view class="downText">
+                    {{item.releaseTime}} / {{item.country}} / {{item.type}} / {{item.actor}}
+                </view>
+                <view class="toDetail" bind:tap="toDetail" data-item="{{item}}">详情</view>
+            </view>
+        </view>
+        <van-divider contentPosition="center" customStyle="width: 90%; margin: 0 auto">没有更多了</van-divider>
+        <view style="height: 80rpx;"></view>
+    </view>
+  </van-tab>
+</van-tabs>

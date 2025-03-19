@@ -1,0 +1,75 @@
+/* pages/orderPage/orderPage.wxss */
+.movieCard {
+    width: 650rpx;
+    height: 275rpx;
+    background-color: #FAF9F9;
+    margin: 25rpx;
+    padding: 25rpx;
+    border: #dddddd 1rpx solid;
+    border-radius: 15rpx;
+    display: flex;
+    justify-content: space-between;
+}
+.tipsText {
+    font-size: 24rpx;
+    color: #b1b1b1;
+    margin-top: 8rpx;
+    white-space: nowrap; /* 禁止换行 */
+    overflow: hidden;    /* 隐藏超出部分 */
+    text-overflow: ellipsis; /* 超出部分显示省略号 */
+}
+.msgCard {
+    width: 650rpx;
+    height: auto;
+    background-color: #FAF9F9;
+    margin: 25rpx;
+    padding: 25rpx;
+    border: #dddddd 1rpx solid;
+    border-radius: 15rpx;
+}
+.commentBtn {
+    width: auto;
+    height: 55rpx;
+    background-color: #3e77ec;
+    color: white;
+    padding: 0 15rpx;
+    line-height: 55rpx;
+    font-size: 26rpx;
+    font-weight: bold;
+    border-radius: 15rpx;
+}
+.payBtn {
+    width: 80%;
+    height: 64rpx;
+    background-color: #3e77ec;
+    position: fixed;
+    bottom: 25rpx;
+    left: 50%;
+    transform: translate(-50%);
+    color: white;
+    text-align: center;
+    line-height: 64rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    border-radius: 32rpx;
+}
+.payBoxBtn {
+    width: 300rpx;
+    height: 70rpx;
+    background-color: #07C160;
+    position: absolute;
+    bottom: 35rpx;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 28rpx;
+    border-radius: 15rpx;
+}
+.detailText {
+    color: rgb(53, 53, 53);
+}
+.finalPrice {
+    font-weight: bolder;
+}

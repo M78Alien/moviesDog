@@ -1,0 +1,169 @@
+/* pages/detailPage/detailPage.wxss */
+.titleBox {
+    width: 700rpx;
+    height: 355rpx;
+    margin: 25rpx 25rpx 0;
+    display: flex;
+    justify-content: space-between;
+}
+.titlePic {
+    width: 33%;
+    height: 100%;
+}
+.titlePicInside {
+    width: 100%;
+    height: 100%;
+    border-radius: 10rpx;
+}
+.titleText {
+    width: 63%;
+    height: 100%;
+    /* background-color: beige; */
+}
+.tag {
+    width: auto;
+    height: 35rpx;
+    padding: 0 6rpx;
+    background-color: #cacaca;
+    border-radius: 6rpx;
+    color: white;
+    font-size: 20rpx;
+    text-align: center;
+    line-height: 36rpx;
+    margin-right: 15rpx;
+    font-weight: bold;
+}
+.titleBtn {
+    width: 100%;
+    height: 50rpx;
+    background-color: #3e78ec;
+    color: white;
+    font-weight: bold;
+    line-height: 50rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    font-size: 26rpx;
+    margin-top: 20rpx;
+}
+.introTextBox {
+    width: 700rpx;
+    height: auto;
+    margin: 25rpx;
+    font-size: 26rpx;
+    line-height: 43rpx;
+}
+.beforeText {
+    font-weight: bold;
+    font-size: 28rpx;
+    margin-bottom: 10rpx;
+}
+.picBox {
+    width: 700rpx;
+    height: 360rpx;
+    margin-left: 25rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.picListBox {
+    width: 100%;
+    height: 300rpx;
+}
+.listImg {
+    width: 200rpx;
+    height: 100%;
+    margin-right: 18rpx;
+    border-radius: 10rpx;
+}
+.rateBox {
+    width: 664rpx;
+    height: 60rpx;
+    background-color: #f3f3f3;
+    margin-left: 25rpx;
+    border-radius: 10rpx;
+    padding: 15rpx 18rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.van-rate__item {
+    margin-top: 4rpx;
+}
+.van-rate__item:first-child {
+    padding-left: 0 !important;
+}
+.rateNum {
+    color: #ffd21e; 
+    font-weight: bold; 
+    margin-top: 2rpx; 
+    margin-left: 25rpx; 
+    font-size: 34rpx;
+    line-height: 50rpx;
+}
+.rateBtn {
+    width: 145rpx;
+    height: 90%;
+    background-color: #3e77ec;
+    color: white;
+    font-size: 24rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 53rpx;
+    border-radius: 10rpx;
+}
+.commentBox {
+    width: 660rpx;
+    height: auto;
+    background-color: #f7f7f7;
+    margin: 25rpx;
+    padding: 20rpx 20rpx 40rpx;
+    border-radius: 10rpx;
+}
+.commentView {
+    width: 660rpx;
+    height: auto;
+}
+.commentText {
+    width: 550rpx;
+    font-size: 26rpx;
+    line-height: 36rpx;
+    margin-top: 10rpx;
+}
+.commentToBtn {
+    width: 100%; 
+    height: 68rpx; 
+    background-color: #3e77ec; 
+    border-radius: 34rpx;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    line-height: 60rpx;
+    position: absolute;
+    bottom: 25rpx;
+    transform: translate(0, -50%);
+}
+.toBuyBtn {
+    width: 100%;
+    height: 100rpx;
+    background-color: white;
+    position: fixed;
+    bottom: 0;
+    border-top: 1px #e0e0e0 solid;
+}
+.buyBtn {
+    width: 90%; 
+    height: 68rpx; 
+    background-color: #f03939; 
+    margin: 13rpx auto; 
+    border-radius: 34rpx;
+    color: white;
+    font-weight: bold;
+    font-size: 30rpx;
+    line-height: 64rpx;
+    text-align: center;
+}
+.textMax {
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+}

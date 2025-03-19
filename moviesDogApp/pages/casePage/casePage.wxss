@@ -1,0 +1,86 @@
+/* pages/casePage/casePage.wxss */
+page {
+    background-color: #f1f1f1;
+}
+.caseBox {
+    width: 94%;
+    height: 70%;
+    background-color: white;
+    margin: 25rpx auto 0; 
+    border-radius: 25rpx;
+    border: #d3d3d3 1rpx solid;
+}
+.msgBox {
+    width: 94%;
+    height: auto;
+    background-color: white;
+    margin: 25rpx auto;
+    border-radius: 25rpx;
+    padding: 25rpx 0;
+}
+.tipText {
+    width: 93%;
+    font-size: 24rpx; 
+    margin-top: 10rpx; 
+    margin-left: 25rpx;
+    color: #b1b1b1;
+    white-space: nowrap; /* 禁止换行 */
+    overflow: hidden;    /* 超出部分隐藏 */
+    text-overflow: ellipsis;
+}
+.titleText {
+    width: 650rpx;
+    font-size: 28rpx;
+    font-weight: bold;
+    margin-left: 25rpx;
+    white-space: normal;
+    word-wrap: break-word;
+}
+.textMax {
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis;
+}
+.Btn {
+    width: 94%;
+    height: 64rpx;
+    background-color: rgb(250, 32, 32);
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    border-radius: 32rpx;
+    text-align: center;
+    line-height: 64rpx;
+    color: white;
+    font-size: 26rpx;
+    font-weight: bold;
+}
+.scroll-view {
+    width: 100%;
+    height: 100%;
+}
+.placeBox {
+    width: 45rpx;
+    height: 45rpx;
+    border: #b1b1b1 1rpx solid;
+    border-radius: 10rpx;
+    margin: 10rpx 5rpx;
+    display: inline-block;
+    white-space: nowrap;
+}
+.screen {
+    width: 300rpx;
+    margin: 25rpx auto 30rpx;
+    text-align: center;
+    line-height: 50rpx;
+    border-top: #B1B1B1 1rpx solid;
+    box-shadow: 0 -5px 5px -5px rgba(0, 0, 0, 0.5);
+    font-size: 24rpx;
+}
+.middleLine {
+    border-right: red 1rpx dashed;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+}

@@ -1,0 +1,68 @@
+<!--pages/allMoviePage/allMoviePage.wxml-->
+<view>
+    <van-search 
+        value="{{ searchInput }}" 
+        placeholder="请输入电影关键词" 
+        bind:search="onSearch" 
+        bind:change="onSearChange"
+    />
+    <view class="topBox">
+        <view style="display: flex; justify-content: space-between;">
+            <view class="topTitle">电影类型</view>
+            <view class="refreshBtn" bind:tap="toRefresh"><van-icon name="replay" bind:tap="toRefresh"/></view>
+        </view>
+        <view class="pickerView">
+            <picker bindchange="bindTypeChange" value="{{typeIndex}}" range="{{typeArr}}" range-key="label" mode="selector">
+                <view class="picker">
+                    {{typeIndex === -1 ? '类型' : typeArr[typeIndex].label}}
+                    <image style="width: 25rpx; height: 25rpx;" src="/assets/icon/downIcon.png" mode=""/>
+                </view>
+            </picker>
+            <picker bindchange="bindLangChange" value="{{langIndex}}" range="{{langArr}}" range-key="label" mode="selector">
+                <view class="picker">
+                    {{langIndex === -1 ? '语言' : langArr[langIndex].label}}
+                    <image style="width: 25rpx; height: 25rpx;" src="/assets/icon/downIcon.png" mode=""/>
+                </view>
+            </picker>
+            <picker bindchange="bindRegionChange" value="{{regionIndex}}" range="{{regionArr}}" range-key="label" mode="selector">
+                <view class="picker">
+                    {{regionIndex === -1 ? '地区' : regionArr[regionIndex].label}}
+                    <image style="width: 25rpx; height: 25rpx;" src="/assets/icon/downIcon.png" mode=""/>
+                </view>
+            </picker>
+            <!-- <picker bindchange="bindSortChange" value="{{sortIndex}}" range="{{sortArr}}">
+                <view class="picker">
+                    {{sortIndex === -1 ? '排序' : sortArr[sortIndex]}}
+                    <image style="width: 25rpx; height: 25rpx;" src="/assets/icon/downIcon.png" mode=""/>
+                </view>
+            </picker> -->
+        </view>
+    </view>
+    <view class="cardBox">
+        <view 
+            class="movieCard {{(index+1)%3 === 0 ? 'movieCardLast' : ''}}" 
+            wx:for="{{movieList}}" 
+            wx:key="*this" 
+            bind:tap="toDetail" 
+            data-item="{{item}}"
+        >
+            <image class="cardPic" src="{{item.pic[0]}}" mode="aspectFill"/>
+            <view class="titleStyle">{{item.name}}</view>
+            <view style="display: flex; justify-content: center; align-items: center; height: 22rpx;">
+                <van-rate 
+                    value="{{ item.rate/2 }}" 
+                    bind:change="onChange" 
+                    color="#ffd21e"
+                    void-color="#eee"
+                    size="20rpx"
+                    gutter="5rpx"
+                    readonly
+                    allow-half
+                />
+                <view style="font-size: 22rpx; height: 20rpx; color: #f3c50c; margin-left: 10rpx;">{{item.rate}}</view>
+            </view>
+        </view>
+    </view>
+    <van-divider contentPosition="center" customStyle="width: 90%; margin: 0 auto">没有更多了</van-divider>
+    <view style="height: 80rpx;"></view>
+</view>

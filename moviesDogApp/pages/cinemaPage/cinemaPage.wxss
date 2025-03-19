@@ -1,0 +1,46 @@
+/* pages/cinemaPage/cinemaPage.wxss */
+.loginBtn {
+    width: 650rpx;
+    height: 70rpx;
+    background-color: #3e77ec;
+    color: white;
+    font-size: 28rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 70rpx;
+    border-radius: 35rpx;
+    position: absolute;
+    bottom: 25rpx;
+    left: 50%;
+    transform: translate(-50%);
+}
+.cinemaBox {
+    width: 700rpx;
+    height: 195rpx;
+    padding: 0 25rpx;
+    /* background-color: rgb(247, 247, 247); */
+}
+.titleText {
+    display: flex;
+    justify-content: space-between;
+    font-size: 32rpx;
+    font-weight: bold;
+}
+.typeTag {
+    font-size: 22rpx;
+    width: auto;
+    height: auto;
+    padding: 2rpx 5rpx;
+    background-color: #b1b1b1;
+    border-radius: 6rpx;
+    color: white;
+    margin-top: 10rpx;
+    margin-right: 10rpx;
+    border: #b1b1b1 1rpx solid;
+}
+.tipText {
+    font-size: 24rpx; 
+    line-height: 40rpx; 
+    color: #B1B1B1; 
+    margin-top: 10rpx;
+}

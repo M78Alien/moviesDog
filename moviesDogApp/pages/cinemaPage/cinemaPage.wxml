@@ -1,0 +1,40 @@
+<!--pages/cinemaPage/cinemaPage.wxml-->
+<van-tabs active="{{ active }}" color="#3e77ec" title-active-color="#3e77ec" bind:change="tabChange" sticky>
+    <van-tab title="{{item}}" wx:for="{{nextFourDay}}" wx:key="*this" >
+        <van-empty description="暂无排片" wx:if="{{cinemaList[active].length === 0}}"/>
+        <view wx:for="{{cinemaList[active]}}" wx:key="*this">
+            <view class="cinemaBox" style="{{index === 0 ? 'margin-top: 25rpx' : ''}}" bind:tap="toRoom" data-item="{{item}}">
+                <view class="titleText">
+                    <view>{{item.name}}</view>
+                    <view style="color: #ee2525;">￥{{item.price}} 起</view>
+                </view>
+                <view class="tipText">{{item.address}}</view>
+                <view style="display: flex;">
+                    <view 
+                        class="typeTag" 
+                        wx:for="{{item.type}}" 
+                        wx:key="*this" 
+                        style="{{item === '杜比影院' ? 'background-color: white; color: #b1b1b1;' : ''}}"
+                    >{{item}}</view>
+                </view>
+                <view class="tipText" style="margin-top: 30rpx;">今日场次：{{item.time}}</view>
+            </view>
+            <van-divider customStyle="width: 700rpx; margin-left: 25rpx"/>
+        </view>
+    </van-tab>
+</van-tabs>
+
+<van-popup show="{{ loginView }}" position="top" custom-style="height: 40%;" bind:close="closeLogin" round>
+    <view style="width: 100%; height: 100%; position: relative;">
+        <view style="display: flex;">
+            <view style="font-size: 44rpx; font-weight: bold; margin-left: 25rpx; margin-bottom: 20rpx;">登录</view>
+            <view style="font-size: 24rpx; line-height: 80rpx; margin-left: 25rpx; color: #b1b1b1;">使用未注册的手机号，将自动注册</view>
+        </view>
+        <van-cell-group>
+            <van-field model:value="{{ userName }}" placeholder="请输入用户名" label="用户名" required size="large" bind:confirm="onLogin" />
+            <van-field model:value="{{ phoneNumber }}" placeholder="请输入手机号" label="手机号" size="large" required type="number" bind:confirm="onLogin" />
+            <van-field model:value="{{ password }}" type="password" label="密码" placeholder="请输入密码" required size="large" bind:confirm="onLogin" />
+        </van-cell-group>
+        <view class="loginBtn" bind:tap="onLogin">登录</view>
+    </view>
+</van-popup>

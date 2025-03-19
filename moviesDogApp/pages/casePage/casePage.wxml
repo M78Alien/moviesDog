@@ -1,0 +1,47 @@
+<!--pages/casePage/casePage.wxml-->
+<view style="width: 100vw; height: 100vh;">
+    <view class="caseBox">
+        <scroll-view scroll-x scroll-y class="scroll-view">
+            <view 
+                style="width: {{placeSize.width}}rpx; height: auto; display: flex; flex-direction: column; justify-content: center; margin: 0 auto; position: relative;"
+            >
+                <view class="screen">{{item.roomName}}</view>
+                <view 
+                    style="display: flex; text-align: center; justify-content: center" 
+                    wx:for="{{roomSize.height}}" 
+                    wx:key="*this"
+                    wx:for-index="outerIndex"
+                >
+                    <view 
+                        class="placeBox" 
+                        wx:for="{{roomSize.width}}" 
+                        wx:key="*this" 
+                        bind:tap="touchPlace" 
+                        data-inner="{{index}}"
+                        data-outer="{{outerIndex}}"
+                        style="background-color: {{touchArr[outerIndex][index].color}};"
+                    ></view>
+                </view>
+                <view class="middleLine" style="height: {{roomSize.height * 65 + 20}}rpx;"></view>
+            </view>
+        </scroll-view>
+    </view>
+    <view class="msgBox">
+        <view style="display: flex; justify-content: space-between;">
+            <view class="titleText textMax" style="width: 70%">{{item.movieName}}</view>
+            <view class="titleText" style="width: 30%; margin-right: 25rpx; color: rgb(250, 32, 32); text-align: right;">{{item.price}} 元
+                <text wx:if="{{touchIndex.length}}">*{{touchIndex.length}}张</text>
+            </view>
+        </view>
+        
+        <view class="tipText">{{item.date}} {{item.time}} {{item.showcaseName}}</view>
+        <van-divider custom-style="width: 93%; margin: 25rpx auto"/>
+        <view class="titleText" style="font-size: 26rpx;">
+            已选择座位：
+            <text wx:for="{{touchIndex}}" wx:key="*this"><text wx:if="{{index > 0}}">、</text>{{item.row}}排{{item.col}}座</text>
+            <text wx:if="{{touchIndex.length === 0}}">暂未选择</text>
+        </view>
+    </view>
+    <view style="height: 70rpx;"></view>
+    <view class="Btn" bind:tap="toOrder">确认选座</view>
+</view>

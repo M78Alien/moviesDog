@@ -1,0 +1,151 @@
+<!--pages/detailPage/detailPage.wxml-->
+<view>
+    <view class="titleBox">
+        <view class="titlePic">
+            <image class="titlePicInside" src="{{titlePicURL}}" mode="aspectFill" bind:tap="showPicture"/>
+        </view>
+        <view class="titleText">
+            <view class="textMax" style="font-size: 34rpx; font-weight: bold;">{{detailMsg.name}}</view>
+            <view class="textMax" style="color: #B1B1B1; font-size: 28rpx; margin-top: 15rpx;">{{detailMsg.enName}}</view>
+            <view style="color: #B1B1B1; font-size: 24rpx; margin-top: 70rpx;">{{detailMsg.type}}</view>
+            <view style="margin-top: 15rpx; display: flex;">
+                <view class="tag" wx:if="{{showIMAX}}">IMAX</view>
+                <view class="tag" wx:if="{{show3D}}">3D</view>
+                <view class="tag" wx:if="{{showDobly}}">杜比全景声</view>
+            </view>
+            <view style="color: #B1B1B1; font-size: 24rpx; margin-top: 15rpx;">{{detailMsg.releaseTime}}上映 {{detailMsg.lengthTime}}分钟</view>
+            <view class="titleBtn" bind:tap="openShare"><van-icon name="share" style="margin-right: 15rpx;"/>分享</view>
+        </view>
+    </view>
+    <van-divider customStyle="width: 700rpx; margin-left: 25rpx"/>
+    <view class="introTextBox">
+        <view class="beforeText">简介</view>
+        <view style="margin-bottom: 10rpx;">{{detailMsg.synopsis}}</view>
+        <view style="margin-bottom: 10rpx;">
+            <text class="beforeText">导演：</text>
+            <text>{{detailMsg.director}}</text>
+        </view>
+        <view style="margin-bottom: 10rpx;">
+            <text class="beforeText">编剧：</text>
+            <text>{{detailMsg.scriptwriter}}</text>
+        </view>
+        <view style="margin-bottom: 10rpx;">
+            <text class="beforeText">主演：</text>
+            <text>{{detailMsg.actor}}</text>
+        </view>
+    </view>
+    <van-divider customStyle="width: 700rpx; margin-left: 25rpx"/>
+    <view class="picBox">
+        <view class="beforeText">剧照</view>
+        <view class="picListBox">
+            <scroll-view 
+                style="width: 100%; height: 100%; white-space: nowrap;"
+                scroll-x="true"
+            >
+                <image 
+                    class="listImg" 
+                    style="{{index === picURLList.length-1 ? 'margin-right: 0': ''}}"
+                    src="{{item}}" 
+                    mode="aspectFill" 
+                    wx:for="{{detailMsg.pictureList}}" 
+                    wx:key="*this" 
+                    bind:tap="showPicture" 
+                    data-url="{{item}}"
+                />
+            </scroll-view>
+        </view>
+    </view>
+    <van-divider customStyle="width: 700rpx; margin-left: 25rpx"/>
+    <view class="rateBox">
+        <view style="display: flex;">
+            <view style="line-height: 48rpx; margin-right: 30rpx; margin-bottom: 0; font-weight: bold;">影趣购评分</view>
+            <van-rate 
+                value="{{ detailMsg.rate/2 }}" 
+                color="#ffd21e"
+                void-color="white"
+                size="30rpx"
+                gutter="12rpx"
+                readonly
+                allow-half
+            />
+            <view class="rateNum" style="{{detailMsg.rate ? '' : 'font-size: 26rpx'}}">{{detailMsg.rate ? detailMsg.rate : '没评分'}}</view>
+        </view>
+        <view class="rateBtn" bind:tap="openComment" wx:if="{{userMsg}}"><van-icon name="chat" style="margin-right: 10rpx;"/>写评价</view>
+    </view>
+    <view class="commentBox">
+        <view class="commentView">
+            <van-empty description="暂无评论" wx:if="{{commentList.length === 0}}"/>
+            <view style="display: flex;" wx:for="{{commentList}}" wx:key="*this">
+                <image 
+                    style="width: 80rpx; height: 80rpx; border-radius: 40rpx; margin-right: 25rpx;" 
+                    src="{{item.cinemaName}}" 
+                    mode="aspectFill"
+                />
+                <view>
+                    <view style="font-size: 24rpx; margin-top: 8rpx;">{{item.userName}}</view>
+                    <view style="display: flex;">
+                        <van-rate 
+                            value="{{ item.rate/2 }}" 
+                            color="#ffd21e"
+                            void-color="#d9d9d9"
+                            size="20rpx"
+                            gutter="5rpx"
+                            readonly
+                            allow-half
+                        />
+                        <view class="rateNum" style="line-height: 41rpx; font-size: 24rpx;">{{ item.rate }}</view>
+                    </view>
+                    <view class="commentText">
+                        <text style="white-space: normal;">{{item.comment}}</text>
+                    </view>
+                    <van-divider wx:if="{{index !== commentList.length-1}}" customStyle="width: 500rpx; margin-left: 10rpx"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view style="height: 100rpx;"></view>
+</view>
+<van-share-sheet
+  show="{{ showShare }}"
+  title="把好电影分享给好友"
+  options="{{ shareList }}"
+  bind:select="selectShare"
+  bind:close="closeShare"
+/>
+<van-popup
+  show="{{ commentView }}"
+  position="top"
+  custom-style="height: 40%;"
+  bind:close="closeComment"
+  round
+>
+    <view style="width: 700rpx; height: 100%; margin: 25rpx; position: relative;">
+        <view style="font-size: 28rpx; font-weight: bold; margin-bottom: 10rpx; ">评分: 
+            <text class="rateNum">{{defaultRate}}</text>
+            <text style="font-weight: normal; font-size: 24rpx; margin-left: 40rpx; color: #B1B1B1;">轻触星星给评分哦</text>
+        </view>
+        <van-rate 
+            value="{{ defaultRate/2 }}" 
+            color="#ffd21e"
+            void-color="#B1B1B1"
+            size="34rpx"
+            gutter="16rpx"
+            allow-half
+            bind:change="rateChange"
+        />
+        <van-divider customStyle="width: 100%"/>
+        <view style="font-size: 28rpx; font-weight: bold; margin-bottom: 10rpx;">评价</view>
+        <textarea 
+            style="width: 100%; height: 200rpx;" 
+            value="{{newComment}}" 
+            placeholder="留下你的精彩评论吧"
+            maxlength="100"
+            confirm-type="done"
+            bindinput="commentChange"
+        ></textarea>
+        <view class="commentToBtn" bind:tap="pushComment">发表</view>
+    </view>
+</van-popup>
+<view class="toBuyBtn">
+    <view class="buyBtn" bind:tap="toCinema">购票</view>
+</view>

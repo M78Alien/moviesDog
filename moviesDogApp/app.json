@@ -1,0 +1,53 @@
+{
+  "pages": [
+    "pages/showingHome/showingHome",
+    "pages/allMoviePage/allMoviePage",
+    "pages/rankingPage/rankingPage",
+    "pages/userPage/userPage",
+    "pages/detailPage/detailPage",
+    "pages/cinemaPage/cinemaPage",
+    "pages/roomPage/roomPage",
+    "pages/casePage/casePage",
+    "pages/orderPage/orderPage"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "影趣购",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "color": "#999",
+    "selectedColor": "#3e77ec",
+    "backgroundColor": "#fff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/showingHome/showingHome",
+        "text": "热映",
+        "iconPath": "assets/icon/movie-line.png",
+        "selectedIconPath": "assets/icon/movie-fill.png"
+      },
+      {
+        "pagePath": "pages/allMoviePage/allMoviePage",
+        "text": "所有电影",
+        "iconPath": "assets/icon/allMovie.png",
+        "selectedIconPath": "assets/icon/allMovie-fill.png"
+      },
+      {
+        "pagePath": "pages/rankingPage/rankingPage",
+        "text": "电影排行",
+        "iconPath": "assets/icon/data.png",
+        "selectedIconPath": "assets/icon/data-fill.png"
+      },
+      {
+        "pagePath": "pages/userPage/userPage",
+        "text": "我的",
+        "iconPath": "assets/icon/user.png",
+        "selectedIconPath": "assets/icon/user-fill.png"
+      }
+    ]
+  }
+}

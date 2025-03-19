@@ -1,0 +1,52 @@
+<!--pages/roomPage/roomPage.wxml-->
+<!-- <view>选择排场</view>
+<view>{{cinemaItem.name}}</view>
+<view>{{movieItem.title ? movieItem.title : movieItem.name}}</view> -->
+<view>
+    <view class="cinemaBox" bind:tap="openCinema">
+        <view style="font-size: 32rpx;">{{cinemaItem.name}}</view>
+        <view class="tipText">{{cinemaItem.address}}</view>
+        <view wx:if="{{cinemaViewSwitch}}" class="tipText">联系电话：{{cinemaItem.concactNumber}}</view>
+        <view wx:if="{{cinemaViewSwitch}}" class="tipText">影院公告：</view>
+        <view wx:if="{{cinemaViewSwitch}}" class="tipText">{{cinemaItem.notice}}</view>
+        <van-icon name="{{cinemaViewSwitch ? 'arrow-up' : 'arrow-down'}}" class="openBtn" size="34rpx"/>
+    </view>
+    <view class="movieBox">
+        <view style="display: flex; width: 100%; height: 100%;">
+            <image 
+                src="{{movieItem.pictureList[0]}}" 
+                mode="aspectFill" 
+                style="width: 175rpx; height: 100%; border-radius: 10rpx; margin-right: 25rpx;"
+            />
+            <view style="width: 450rpx;">
+                <view style="font-size: 32rpx; font-weight: bold;">{{movieItem.name}}</view>
+                <view class="tipText" style="font-size: 26rpx; margin-top: 15rpx;">
+                    影趣购评分
+                    <text style="margin-left: 15rpx; color: #f1d30c; font-weight: bold;">{{movieItem.rate}}</text>
+                </view>
+                <view class="tipText textMax" style="margin-top: 50rpx;">{{movieItem.type}}</view>
+                <view class="tipText textMax">{{movieItem.lengthTime}}分钟</view>
+                <view class="tipText textMax">{{movieItem.actor}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="tipText" style="width: 700rpx; margin: 20rpx 25rpx;">向你安利~ 巨幕配合上杜比全景声，能有更佳的观影体验哦！</view>
+    <view class="dateBox">
+        <view style="line-height: 75rpx; font-size: 30rpx; margin-left: 25rpx; color: #3e77ec;">{{itemDate}}</view>
+        <view style="line-height: 75rpx; font-size: 26rpx; margin-left: 25rpx; color: #b1b1b1;" bind:tap="toBack">更换日期</view>
+    </view>
+    <view class="roomBox" wx:for="{{roomList}}" wx:key="*this">
+        <view style="width: 20%;">
+            <view style="font-size: 38rpx; text-align: center; height: 100%; line-height: 100rpx;">{{item.time}}</view>
+        </view>
+        <view style="width: 47%">
+            <view style="margin-left: 20rpx; font-size: 27rpx; margin-top: 10rpx;">{{item.title}}</view>
+            <view style="margin-left: 20rpx; color: #b1b1b1; font-size: 24rpx; margin-top: 15rpx;">{{item.name}}</view>
+        </view>
+        <view style="width: 33%; display: flex; align-items: center;">
+            <view style="font-size: 34rpx; color: #EE4E4E;">{{item.price}}<text style="font-size: 28rpx;">元</text></view>
+            <view class="bugBtn" bind:tap="toCase" data-item="{{item}}">购票</view>
+        </view>
+    </view>
+    <view style="height: 100rpx;"></view>
+</view>

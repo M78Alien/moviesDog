@@ -1,0 +1,44 @@
+<!--pages/showingHome/showingHome.wxml-->
+<view>
+    <view>
+        <swiper indicator-dots="true" autoplay="true" circular="true" class="swiperClass">
+            <block wx:for="{{swiperList}}" wx:key="*this">
+                <swiper-item bind:tap="toDetail" data-item="{{item}}">
+                    <image src="{{item.pictureList[1]}}" mode="aspectFill" class="swiperImg"></image>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class="touchTip">
+        <view style="width: 70%; height: 100%; display: flex; align-items: center;">
+            <image class="tipIcon" src="../../assets/icon/rankingIcon.png" mode="" />
+            <text class="tipText">当前票房冠军：{{championName}}</text>
+        </view>
+        <view class="tipTouch" bind:tap="toRankingPage">查看实时排名 ></view>
+    </view>
+    <view wx:for="{{movieCardList}}" wx:key="*this">
+        <view class="movieCard" bind:tap="toDetail" data-item="{{item}}">
+            <view class="movieCardPic">
+                <image class="cardPic" src="{{item.pictureList[0]}}" mode="aspectFill" />
+            </view>
+            <view class="movieCardText">
+                <view class="cardText" style="font-weight: bold; font-size: 28rpx;">{{item.name}}</view>
+                <view class="cardText" style="font-size: 24rpx; margin-top: 0rpx;">影趣购评分：
+                    <span style="color: #f1d30c; font-weight: bold; font-size: 28rpx;">{{item.rate}}</span>
+                </view>
+                <view class="cardText" style="display: flex; margin-top: 30rpx; height: 52rpx;">
+                    <view class="typeTab" wx:for="{{item.showType}}" wx:key="*this">
+                        {{item}}
+                    </view>
+                </view>
+                <view class="cardText" style="font-size: 24rpx; ">主演：{{item.actor}}</view>
+            </view>
+            <view class="movieCardBtn">
+                <view class="cardBtn" catch:tap="toBuy" data-item="{{item}}">购票</view>
+            </view>
+        </view>
+        <view class="cardLine" wx:if="{{index !== movieCardList.length-1}}"></view>
+    </view>
+    <van-divider contentPosition="center" customStyle="width: 90%; margin: 0 auto">没有更多了</van-divider>
+    <view style="height: 80rpx;"></view>
+</view>

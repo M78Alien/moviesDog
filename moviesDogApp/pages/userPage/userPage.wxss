@@ -1,0 +1,87 @@
+/* pages/userPage/userPage.wxss */
+page {
+    background-color: #F6F6F6;
+}
+.loginBtn {
+    width: 650rpx;
+    height: 70rpx;
+    background-color: #3e77ec;
+    color: white;
+    font-size: 28rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 70rpx;
+    border-radius: 35rpx;
+    position: absolute;
+    bottom: 25rpx;
+    left: 50%;
+    transform: translate(-50%);
+}
+.userBox {
+    width: 700rpx;
+    height: auto;
+    display: flex;
+}
+.outBtn {
+    width: 48%;
+    height: 70rpx;
+    margin: 35rpx 0;
+    background-color: #d1d1d1;
+    color: white;
+    font-size: 28rpx;
+    font-weight: bold;
+    text-align: center;
+    line-height: 70rpx;
+    border-radius: 35rpx;
+}
+.listCard {
+    width: 700rpx;
+    height: 225rpx;
+    background-color: white;
+    border-top: #eeeeee 1rpx solid; 
+    border-bottom: #eeeeee 1rpx solid; 
+    padding: 25rpx;
+    display: flex;
+    align-items: center;
+    margin-bottom: 25rpx;
+}
+.tipsText {
+    font-size: 24rpx;
+    color: #b1b1b1;
+    margin-top: 8rpx;
+    white-space: nowrap; /* 禁止换行 */
+    overflow: hidden;    /* 隐藏超出部分 */
+    text-overflow: ellipsis; /* 超出部分显示省略号 */
+}
+.statusBtn {
+    width: auto;
+    height: 50rpx;
+    background-color: #d1d1d1;
+    padding: 0 18rpx;
+    font-size: 24rpx;
+    color: white;
+    line-height: 50rpx;
+    border-radius: 25rpx;
+    margin: auto;
+}
+.van-rate__item:first-child {
+    padding-left: 0 !important;
+}
+.van-swipe-cell__right {
+    background-color: rgb(250, 58, 58);
+    width: 65px;
+    height: 275rpx;
+    color: white;
+    text-align: center;
+    line-height: 275rpx;
+}
+.profile {
+    width: 130rpx;
+    height: 130rpx;
+    border-radius: 65rpx;
+}
+.textMax {
+    white-space: nowrap; 
+    overflow: hidden;    
+    text-overflow: ellipsis;
+}

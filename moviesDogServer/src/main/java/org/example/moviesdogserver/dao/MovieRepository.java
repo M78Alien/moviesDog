@@ -29,7 +29,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query(value = "SELECT name, sales FROM `movie_table` WHERE is_delete = 0 ORDER BY sales DESC LIMIT 5", nativeQuery = true)
     List<Object> getMovieSalesRank();
 
-    @Query(value = "SELECT name, ROUND(rate, 1), `comment` FROM `movie_table` WHERE is_delete = 0 ORDER BY rate DESC LIMIT 5", nativeQuery = true)
+    @Query(value = "SELECT movie_name, ROUND(AVG(rate), 1) AS rate, count(`comment`) FROM order_table GROUP BY movie_name ORDER BY rate DESC LIMIT 5", nativeQuery = true)
     List<Object> getMovieRateRank();
 
     @Query(value = "SELECT cinema_name, SUM(price) * 100000 AS priceSum FROM `order_table` WHERE cinema_id IS NOT NULL GROUP BY cinema_name ORDER BY priceSum DESC", nativeQuery = true)

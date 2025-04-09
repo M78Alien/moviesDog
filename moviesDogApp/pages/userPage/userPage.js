@@ -127,7 +127,10 @@ Page({
         })
     },
     toEdit() {
-        this.setData({editView: !this.data.editView})
+        // this.setData({editView: !this.data.editView})
+        wx.navigateTo({
+          url: '/pages/userMsgPage/userMsgPage',
+        })
     },
     async getCommentList() {
         const response = await getUserComment(this.data.userMsg.id)
@@ -145,28 +148,7 @@ Page({
     showPsw(){
         this.setData({pswShow: !this.data.pswShow})
     },
-    changeProfile(){
-        const _this = this
-        wx.chooseMedia({
-            count: 1,
-            mediaType: ['image'],
-            sourceType: ['album', 'camera'],
-            camera: 'back',
-            success(res) {
-                console.log(res.tempFiles[0].tempFilePath)
-                console.log(res.tempFiles[0].size)
-                if (res.tempFiles[0].size > 1000000) {
-                    wx.showToast({
-                      title: '图片体积过大',
-                      icon: 'error'
-                    })
-                } else {
-                    _this.upload(res.tempFiles[0].tempFilePath)
-                }
-            }
-        })
-        
-    },
+    
     upload(filePath) {
         const uploadUrl = BaseURL + '/upload';
         const _this = this

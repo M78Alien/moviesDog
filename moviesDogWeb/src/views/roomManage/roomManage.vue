@@ -442,7 +442,7 @@ onMounted(async () => {
       :cell-style="{'text-align':'center'}"
       :header-cell-style="{'text-align':'center', 'background-color':'#dfdfdf', 'color':'#151515'}"
     >
-      <el-table-column prop="index" label="序号" width="55" />
+      <el-table-column prop="index" label="ID" width="55" />
       <el-table-column prop="cinemaName" label="影院名称" />
       <el-table-column prop="roomName" label="影厅名称" />
       <el-table-column prop="address" label="影院地址" />
@@ -626,7 +626,7 @@ onMounted(async () => {
         :cell-style="{'text-align':'center'}"
         :header-cell-style="{'text-align':'center', 'background-color':'#dfdfdf', 'color':'#151515'}"
       >
-        <el-table-column prop="id" label="序号" width="55" />
+        <el-table-column prop="id" label="ID" width="55" />
         <el-table-column prop="showcaseName" label="排场名称" />
         <el-table-column prop="movieName" label="电影名称" />
         <el-table-column prop="roomName" label="影厅名称" />

@@ -8,13 +8,15 @@
     "pages/cinemaPage/cinemaPage",
     "pages/roomPage/roomPage",
     "pages/casePage/casePage",
-    "pages/orderPage/orderPage"
+    "pages/orderPage/orderPage",
+    "pages/userMsgPage/userMsgPage"
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "影趣购",
     "navigationBarBackgroundColor": "#ffffff"
   },
+  "navigateToMiniProgramAppIdList": ["wx7564fd5313d24844"],
   "componentFramework": "glass-easel",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",

@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const baseURL = '/api'
+// const baseURL = 'http://localhost:8080'
+const baseURL = 'http://8.138.199.128:8772'
 // 创建 axios 实例，设置基础地址和超时时间
 const http = axios.create({
   baseURL,

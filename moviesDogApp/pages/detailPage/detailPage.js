@@ -12,9 +12,7 @@ Page({
         // 标题封面
         titlePicURL: '',
         // 剧照列表
-        picURLList: [
-            'https://alien-blog.oss-cn-beijing.aliyuncs.com/moviesDog/%E5%93%AA%E5%90%92%E4%B9%8B%E9%AD%94%E7%AB%A5%E9%97%B9%E6%B5%B7_0_2.jpg', 'https://alien-blog.oss-cn-beijing.aliyuncs.com/moviesDog/%E5%93%AA%E5%90%92%E4%B9%8B%E9%AD%94%E7%AB%A5%E9%97%B9%E6%B5%B7_0_1%20(1).jpg', 'https://alien-blog.oss-cn-beijing.aliyuncs.com/moviesDog/%E5%93%AA%E5%90%92%E4%B9%8B%E9%AD%94%E7%AB%A5%E9%97%B9%E6%B5%B7_0_16.jpg', 'https://alien-blog.oss-cn-beijing.aliyuncs.com/moviesDog/%E5%93%AA%E5%90%92%E4%B9%8B%E9%AD%94%E7%AB%A5%E9%97%B9%E6%B5%B7_0_15.jpg', 'https://alien-blog.oss-cn-beijing.aliyuncs.com/moviesDog/%E5%93%AA%E5%90%92%E4%B9%8B%E9%AD%94%E7%AB%A5%E9%97%B9%E6%B5%B7_0_14.jpg'
-        ],
+        picURLList: [],
         // 分享弹窗
         showShare: false,
         // 分享类型

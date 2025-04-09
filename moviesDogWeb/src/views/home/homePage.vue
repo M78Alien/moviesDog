@@ -2,12 +2,10 @@
 import { ref, reactive, onMounted } from 'vue';
 // import * as echarts from 'echarts';
 import EchartComponents from "@/components/echartComponents.vue";
-import { getSaleRank } from "@/apis/order.js"
-
-const saleList = ref([])
+import { getSaleRank, getRateRank, getCinemaRank } from "@/apis/order.js"
 
 // 票房排行榜统计数据
-const saleOption = {
+const saleOption = reactive({
   title: {
     text: '票房排行榜'
   },
@@ -31,37 +29,31 @@ const saleOption = {
   },
   yAxis: {
     type: 'category',
-    data: ['蛟龙行动', '封神第二部', '熊出没', '唐探1900', '哪吒之魔童闹海']
+    data: []
   },
   series: [
     {
       name: '累计票房',
       type: 'bar',
-      data: [36900, 113200, 68500, 296000, 344100],
+      data: [],
       itemStyle: {
-        color: '#F9C78B'
+        color: '#ffcc99'
       },
       label: {
         show: true,
-        color: '#656565'
-      }
-    },
-    {
-      name: '今日票房',
-      type: 'bar',
-      data: [226, 497, 725, 4685, 47573],
-      itemStyle: {
-        color: '#F39423'
-      },
-      label: {
-        show: true,
-        color: '#656565'
+        color: '#656565',
+        formatter: function(params) {
+          return params.value < 10000 ? params.value :
+            params.value < 10000000 ? params.value/10000 + '万' :
+              params.value < 100000000 ? params.value/10000000 + '千万' :
+                params.value/100000000 + '亿';
+        }
       }
     }
   ]
-};
+});
 // 电影评分排行榜
-const scoreOption = {
+const scoreOption = reactive({
   title: {
     text: '电影评分排行榜'
   },
@@ -75,7 +67,7 @@ const scoreOption = {
   xAxis: [
     {
       type: 'category',
-      data: ['蛟龙行动', '封神第二部', '熊出没', '唐探1900', '哪吒之魔童闹海'],
+      data: [],
       axisPointer: {
         type: 'shadow'
       },
@@ -99,9 +91,7 @@ const scoreOption = {
     {
       name: '评论数',
       type: 'bar',
-      data: [
-        23, 67, 164, 154, 356
-      ],
+      data: [],
       label: {
         show: true,
         color: '#292929',
@@ -112,62 +102,90 @@ const scoreOption = {
       name: '评分',
       type: 'line',
       yAxisIndex: 1,
-      data: [
-        4.5, 7.3, 6.6, 7.4, 9.1
-      ],
+      data: [],
       itemStyle: {
         color: '#ff9c00'
       },
       label: {
         show: true,
-        color: '#656565'
+        color: '#292929'
       }
     }
   ]
-};
+});
 // 影院销量占比
-const cinemaOption = {
+const cinemaOption = reactive({
   title: {
-    text: '影院销量占比'
+    text: '影院票房占比'
   },
   tooltip: {
     trigger: 'item'
   },
   series: [
     {
-      name: '影院销量占比',
+      name: '影院票房占比',
       type: 'pie',
       radius: ['40%', '70%'],
       avoidLabelOverlap: false,
       label: {
         show: true,
-        formatter: '{b}: {c} ({d}%)'
+        formatter: (params) => {
+          const value = params.value < 10000 ? params.value : params.value < 10000000 ? params.value/10000 + '万' : params.value < 100000000 ? params.value/10000000 + '千万' : params.value/100000000 + '亿';
+          return `${params.name}\n\n${value} (${params.percent}%)`;
+        },
+        textStyle: {
+          fontSize: 12
+        }
       },
       labelLine: {
         show: true
       },
-      data: [
-        { value: 1048, name: '影院1' },
-        { value: 735, name: '影院2' },
-        { value: 580, name: '影院3' },
-        { value: 484, name: '影院4' },
-        { value: 300, name: '影院5' }
-      ]
+      data: []
     }
   ]
-};
+});
+
+// 获取票房数据
+const getSale = async () => {
+  const response = await getSaleRank();
+  saleOption.yAxis.data = response.reverse().map(item => item[0])
+  saleOption.series[0].data = response.map(item => item[1])
+}
+
+// 获取评分数据
+const getRate = async () => {
+  const response = await getRateRank();
+  scoreOption.xAxis[0].data = response.reverse().map(item => {
+    if (item[0].length > 6) {
+      return item[0].substring(0, 6) + '...'
+    } else {
+      return item[0]
+    }
+  })
+  scoreOption.series[0].data = response.map(item => item[2])
+  scoreOption.series[1].data = response.map(item => item[1])
+  // console.log(scoreOption);
+}
+
+// 获取影院数据
+const getCinema = async () => {
+  const response = await getCinemaRank();
+  cinemaOption.series[0].data = response.map(item => {
+    return {'value': item[1].toFixed(1), 'name': item[0]}
+  })
+  // console.log(response)
+}
 
 // 启动执行
-onMounted(async () => {
-  const response = await getSaleRank();
-  console.log(response);
-  saleList.value = response;
+onMounted(() => {
+  getSale()
+  getRate()
+  getCinema()
 })
 </script>
 
 <template>
   <div class="homeBox">
-    <div>{{saleList.length ? saleList[0][0] : ''}}</div>
     <EchartComponents :options="saleOption" style="width: 100%; height: 40%; margin-top: 25px"></EchartComponents>
     <div style="display: flex; height: 40%; width: 100%; margin-top: 50px">
       <EchartComponents :options="scoreOption" style="width: 50%; height: 100%"></EchartComponents>

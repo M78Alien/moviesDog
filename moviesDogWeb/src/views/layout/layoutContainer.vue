@@ -61,10 +61,10 @@ onMounted(() => {
             style="font-weight: bold"
             router
           >
-<!--            <el-menu-item index="/home">-->
-<!--              <el-icon><HomeFilled /></el-icon>-->
-<!--              <span>数据看板</span>-->
-<!--            </el-menu-item>-->
+            <el-menu-item index="/home">
+              <el-icon><HomeFilled /></el-icon>
+              <span>数据看板</span>
+            </el-menu-item>
             <el-menu-item index="/movieManage">
               <el-icon><VideoCameraFilled /></el-icon>
               <span>电影管理</span>

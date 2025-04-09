@@ -87,4 +87,22 @@ public class movieController {
     public String getMovieChampion() {
         return movieRepository.getMovieSalesChampion();
     }
+
+    // 获取票房排行图表数据
+    @RequestMapping(value = "/chart/sales", method = RequestMethod.GET)
+    public List<Object> getMovieSalesRank() {
+        return movieRepository.getMovieSalesRank();
+    }
+
+    // 获取评分排行图表数据
+    @RequestMapping(value = "/chart/rate", method = RequestMethod.GET)
+    public List<Object> getMovieRateRank() {
+        return movieRepository.getMovieRateRank();
+    }
+
+    // 获取影院排行数据
+    @RequestMapping(value = "/chart/cinema", method = RequestMethod.GET)
+    public List<Object> getMovieCinemaRank() {
+        return movieRepository.getMovieCinemaRank();
+    }
 }

@@ -223,6 +223,7 @@ const toSave = async () => {
     response1 = await getCinemaTable("")
   } else {
     response1 = await getCinemaTable(isLoggedIn.name)
+    ElMessage.warning('修改影院信息后建议重新登录')
   }
   responseConverse(response1)
   // console.log(tableData)
@@ -323,7 +324,7 @@ onMounted(async () => {
       :cell-style="{'text-align':'center'}"
       :header-cell-style="{'text-align':'center', 'background-color':'#dfdfdf', 'color':'#151515'}"
     >
-      <el-table-column prop="index" label="序号" width="55" />
+      <el-table-column prop="index" label="ID" width="55" />
       <el-table-column prop="cinemaName" label="影院名称" />
       <el-table-column prop="address" label="影院地址" />
       <el-table-column prop="phoneNumber" label="联系电话" />

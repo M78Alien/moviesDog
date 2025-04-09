@@ -101,7 +101,7 @@ onMounted(async () => {
       :cell-style="{'text-align':'center'}"
       :header-cell-style="{'text-align':'center', 'background-color':'#dfdfdf', 'color':'#151515'}"
     >
-      <el-table-column prop="id" label="序号" width="55" />
+      <el-table-column prop="id" label="ID" width="55" />
       <el-table-column prop="name" label="用户名称" />
       <el-table-column prop="phoneNumber" label="登录手机号" />
       <el-table-column prop="password" label="登录密码" />
@@ -138,7 +138,7 @@ onMounted(async () => {
       :cell-style="{'text-align':'center'}"
       :header-cell-style="{'text-align':'center', 'background-color':'#dfdfdf', 'color':'#151515'}"
     >
-      <el-table-column prop="id" label="序号" width="55" />
+      <el-table-column prop="id" label="ID" width="55" />
       <el-table-column prop="movieName" label="电影名称" />
       <el-table-column prop="cinemaName" label="影院名称" />
       <el-table-column prop="roomName" label="影厅名称" />

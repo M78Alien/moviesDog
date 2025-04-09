@@ -10,7 +10,7 @@ Page({
         item: '',
         status: '', // 0:未支付；1:未到观影时间; 2:观影未评价; 3:观影已评价; 4:未观影已评价
         orderTime: '',
-        rateValue: '0',
+        rateValue: '7',
         commentText: '',
         payShow: false,
         payMoney: '',
@@ -34,7 +34,7 @@ Page({
     },
 
     async getComment() {
-        if (this.data.rateValue === '0') {
+        if (this.data.rateValue === '0' || this.data.rateValue === 0) {
             wx.showToast({
               title: '还没有给评分',
               icon: 'none'
@@ -170,7 +170,7 @@ Page({
                 'type': typeConverse(response.data.type.split(','))
             },
             roomMsg: response1.data,
-            rateValue: response2.data?.rate ? response2.data.rate : 0,
+            rateValue: response2.data?.rate ? response2.data.rate : 7,
             commentText: response2.data?.comment ? response2.data.comment : ''
         })
         _this.getUserInfo()

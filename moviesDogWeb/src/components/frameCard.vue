@@ -86,7 +86,7 @@ onUpdated(() => {
           <el-button type="info" @click="closeModal">关闭</el-button>
         </div>
       </div>
-      <div style="margin-top: 15px">
+      <div style="margin-top: 15px; overflow: auto; white-space: nowrap; width: 100%; height: 90%">
         <slot></slot>
       </div>
     </div>

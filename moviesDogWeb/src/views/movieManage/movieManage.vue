@@ -167,6 +167,8 @@ const countryList = [
 ]
 // 输入框是否可用
 const isFormEdit = ref(false)
+// 是否可以添加海报
+const isPicEdit = ref(false)
 
 // 表格数据
 const tableData = ref([])
@@ -245,6 +247,7 @@ const showDetails = (row) => {
   // console.log(formData)
   isFrame.value = true
   isFormEdit.value = true
+  isPicEdit.value = false
 }
 // 编辑点击事件
 const showEdit = (row) => {
@@ -266,6 +269,7 @@ const showEdit = (row) => {
   formData.synopsis = row.row.synopsis
   isFrame.value = true
   isFormEdit.value = false
+  isPicEdit.value = false
 }
 // 搜索点击事件
 const toSearch = async () => {
@@ -279,6 +283,9 @@ const showAdd = () => {
   frameTitle.value = '导入电影信息'
   isFrame.value = true
   isFormEdit.value = false
+  isPicEdit.value = true
+  uploadedFiles.value = []
+  uploadRef.value?.clearFiles()
   formData.movieName = ''
   formData.EnName = ''
   formData.director = ''
@@ -302,7 +309,7 @@ const closeModal = () => {
 const onSave = () => {
   formRef?.value.validate((valid) => {
     if (valid) {
-      if (uploadedFiles.value.length <= 0) {
+      if (uploadedFiles.value.length <= 0 && isPicEdit.value) {
         ElMessage({
           message: '电影海报未上传',
           type: 'error'
@@ -470,7 +477,10 @@ const converseResponse = (response) => {
       "previewUrl": item.previewUrl,
       "pictureList": item.pictureList,
       "synopsis": item.synopsis,
-      "sale": item.sales,
+      "sale": item.sales < 10000 ? item.sales :
+        item.sales < 10000000 ? item.sales/10000 + '万' :
+          item.sales < 100000000 ? item.sales/10000000 + '千万' :
+            item.sales/100000000 + '亿',
       "score": item.rate.toFixed(1),
       "comment": item.comment,
       "count": item.count,
@@ -516,7 +526,7 @@ onMounted(async () => {
       :cell-style="{'text-align':'center'}"
       :header-cell-style="{'text-align':'center', 'background-color':'#dfdfdf', 'color':'#151515'}"
     >
-      <el-table-column prop="index" label="序号" width="55" />
+      <el-table-column prop="index" label="ID" width="55" />
       <el-table-column prop="movieName" label="电影名称" width="150" />
       <el-table-column prop="EnName" label="外文名称" />
       <el-table-column prop="director" label="导演" />
@@ -636,11 +646,11 @@ onMounted(async () => {
           </el-form-item>
         </div>
         <div style="width: 50%">
-          <div style="margin-bottom: 10px;" v-if="!isFormEdit">
+          <div style="margin-bottom: 10px;" v-if="!isFormEdit && isPicEdit">
             <span style="color: #5a5a5a; margin-right: 10px"><span style="color: red">* </span>电影海报</span>
-            <span style="color: rgba(90,90,90,0.53); font-size: 12px">最多上传5张，第一张需为竖版海报，第二张需为横版海报</span>
+            <div style="color: rgba(90,90,90,0.53); font-size: 12px; margin-top: 4px">最多上传5张，图片大小不超过1M，第一张需为竖版海报，第二张需为横版海报</div>
           </div>
-          <div v-if="!isFormEdit">
+          <div v-if="!isFormEdit && isPicEdit">
             <el-upload
               :action="uploadURL"
               ref="uploadRef"
@@ -656,11 +666,13 @@ onMounted(async () => {
             </el-dialog>
           </div>
           <div style="margin-bottom: 10px; margin-top: 7px; color: #5a5a5a"><span style="color: red">* </span>电影简介</div>
+          <div style="color: rgba(90,90,90,0.53); font-size: 12px; text-align: end;">{{ formData.synopsis.length }} / 230</div>
           <el-form-item prop="synopsis">
             <el-input
               v-model="formData.synopsis"
               style="width: 100%"
               :rows="4"
+              maxlength="230"
               type="textarea"
               placeholder="输入电影简介"
               :disabled="isFormEdit"

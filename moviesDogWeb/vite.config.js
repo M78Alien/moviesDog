@@ -29,11 +29,12 @@ export default defineConfig({
     },
   },
   server: {
-    host: '0.0.0.0', // 监听所有网络接口
-    port: 5173,      // 默认端口，可以自定义
+    host: '0.0.0.0',
+    port: 5173,
     proxy: {
       '/api': {
-        target: 'http://8.138.199.128:8772', // 后端地址
+        // target: 'http://8.138.199.128:8772',
+        target: 'http://localhost:8080',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, ''),
       },

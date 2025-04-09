@@ -26,7 +26,7 @@ onMounted(() => {
       window.removeEventListener('resize', resizeHandler);
       myChart.dispose();
     });
-  }, 1000)
+  }, 500)
 
 });
 

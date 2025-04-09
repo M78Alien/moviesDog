@@ -7,12 +7,12 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('@/views/layout/layoutContainer.vue'),
-      redirect: '/movieManage',
+      redirect: '/home',
       children: [
-        // {
-        //   path: '/home',
-        //   component: () => import('@/views/home/homePage.vue')
-        // },
+        {
+          path: '/home',
+          component: () => import('@/views/home/homePage.vue')
+        },
         {
           path: '/movieManage',
           component: () => import('@/views/movieManage/movieManage.vue')

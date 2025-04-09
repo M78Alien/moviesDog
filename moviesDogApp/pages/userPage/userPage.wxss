@@ -64,9 +64,9 @@ page {
     border-radius: 25rpx;
     margin: auto;
 }
-.van-rate__item:first-child {
+/* .van-rate__item:first-child {
     padding-left: 0 !important;
-}
+} */
 .van-swipe-cell__right {
     background-color: rgb(250, 58, 58);
     width: 65px;

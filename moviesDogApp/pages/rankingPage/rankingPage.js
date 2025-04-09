@@ -73,7 +73,7 @@ Page({
                 'pictureList': item.pictureList.split(','),
                 'type': item.type.split(','),
                 'rate': item.rate.toFixed(1),
-                'sales': item.sales >= 100000000 ? item.sales/100000000 + '亿' : item.sales === 0 ? 0 : item.sales/10000 + '千万'
+                'sales': item.sales >= 100000000 ? item.sales/100000000 + '亿' : item.sales === 0 ? 0 : item.sales/10000000 + '千万'
             }
         })
     })

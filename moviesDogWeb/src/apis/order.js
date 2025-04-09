@@ -15,6 +15,16 @@ export const getOrderTable = text => {
 }
 
 export const getSaleRank = () => request({
-  url: `/rank/sales`,
+  url: `/chart/sales`,
+  method: 'GET'
+})
+
+export const getRateRank = () => request({
+  url: `/chart/rate`,
+  method: 'GET'
+})
+
+export const getCinemaRank = () => request({
+  url: `/chart/cinema`,
   method: 'GET'
 })

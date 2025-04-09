@@ -19,7 +19,7 @@ Page({
         label: "动作"  
       },  
       {  
-        value: "Science Fiction",  
+        value: "Science_Fiction",  
         label: "科幻"  
       },  
       {  
@@ -47,7 +47,7 @@ Page({
         label: "战争"  
       },  
       {  
-        value: "Martial Arts",  
+        value: "Martial_Arts",  
         label: "武侠"  
       },  
       {  

@@ -89,9 +89,9 @@
 .van-rate__item {
     margin-top: 4rpx;
 }
-.van-rate__item:first-child {
+/* .van-rate__item:first-child {
     padding-left: 0 !important;
-}
+} */
 .rateNum {
     color: #ffd21e; 
     font-weight: bold; 

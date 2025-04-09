@@ -13,7 +13,7 @@
                 <van-icon name="phone-o" style="margin-right: 15rpx;" />联系客服
             </button>
             <view class="outBtn" style="background-color: #7ca6fc;" bind:tap="toEdit">
-                <van-icon name="contact-o" style="margin-right: 15rpx;" />更多信息
+                <van-icon name="contact-o" style="margin-right: 15rpx;" />个人中心
             </view>
         </view>
         
@@ -129,7 +129,7 @@
     </view>
 </van-popup>
 
-<van-popup
+<!-- <van-popup
   show="{{ editView }}"
   position="bottom"
   custom-style="height: 45%;"
@@ -154,4 +154,4 @@
         </view>
         <view style="height: 30rpx;"></view>
     </view>
-</van-popup>
+</van-popup> -->

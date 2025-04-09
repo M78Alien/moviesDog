@@ -80,7 +80,8 @@ const onRegister = () => {
         "concactNumber": formRegister.phoneNumber,
         "phoneNumber": formRegister.phoneNumber,
         "password": formRegister.password,
-        "isDelete": false
+        "isDelete": false,
+        "isOpen": true,
       })
       if(response.success) {
         ElMessage({

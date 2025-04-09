@@ -17,9 +17,9 @@
     height: 100%;
     border-radius: 10rpx;
 }
-.van-rate__item:first-child {
+/* .van-rate__item:first-child {
     padding-left: 0 !important;
-}
+} */
 .downText {
     width: 100%;
     font-size: 22rpx; 
